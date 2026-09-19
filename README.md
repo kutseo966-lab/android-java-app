@@ -1,41 +1,8 @@
-# 📱 Android Java App
+# CounterApp
 
-Android приложение на Java с автоматической сборкой APK через GitHub Actions.
+Приложение позволяет вести точный счёт выбранных событий в реальном времени.
 
-## 🚀 Возможности
+Android-приложение на Kotlin + Jetpack Compose. Собрано автоматически ИИ-агентом AETHER.
 
-- ✅ Простой и понятный UI
-- ✅ Material Design
-- ✅ Автоматическая сборка Debug и Release APK
-- ✅ GitHub Actions CI/CD
-
-## 📦 Сборка
-
-Сборка происходит автоматически при пуше в `main` ветку.
-
-### Debug APK
-```bash
-./gradlew assembleDebug
-```
-
-### Release APK
-```bash
-./gradlew assembleRelease
-```
-
-## 📥 Скачивание APK
-
-1. Перейди в [Actions](https://github.com/kutseo966-lab/android-java-app/actions)
-2. Выбери последний успешный запуск
-3. Скачай артефакт `android-app-debug` или `android-app-release`
-
-## 🛠️ Технологии
-
-- Java 17
-- Android SDK 34
-- Gradle 8.0
-- Material Components
-
----
-
-Создано автоматически через Python-агент 🤖
+## Сборка
+APK собирается через GitHub Actions (workflow **Build APK**). Готовый файл — в артефактах запуска (`app-debug-apk`).
