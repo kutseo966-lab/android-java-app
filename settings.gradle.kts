@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "CounterApp"
+rootProject.name = "NoteMaster"
 include(":app")

@@ -37,9 +37,9 @@ fun AppScreen() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("CounterApp", fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text("NoteMaster", fontSize = 30.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
-            Text("Приложение позволяет вести точный счёт выбранных событий в реальном времени.", fontSize = 16.sp)
+            Text("Приложение-заметочник, позволяющее быстро создавать, редактировать и хранить заметки с синхронизацией.", fontSize = 16.sp)
             Spacer(Modifier.height(36.dp))
             Text("Нажато раз: $count", fontSize = 22.sp)
             Spacer(Modifier.height(16.dp))
