@@ -24,17 +24,12 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: 🤖 Set up Android SDK
+    - name: 🤖 Setup Android SDK
       uses: android-actions/setup-android@v3
-
-    - name: 📝 Accept Android SDK licenses
-      run: |
-        yes | sdkmanager --licenses || true
-        yes | sdkmanager --update || true
-
-    - name: 📦 Install SDK components
-      run: |
-        sdkmanager "platforms;android-34" "build-tools;34.0.0" || true
+      with:
+        cmdline-tools-version: 8512546
+        packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
+        accept-android-sdk-licenses: true
 
     - name: 📦 Cache Gradle packages
       uses: actions/cache@v4
@@ -50,7 +45,10 @@ jobs:
       run: chmod +x gradlew
 
     - name: 🏗️ Build Debug APK
-      run: ./gradlew assembleDebug --stacktrace
+      run: |
+        export ANDROID_HOME=/usr/local/lib/android/sdk
+        export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+        ./gradlew assembleDebug --stacktrace --info
 
     - name: ✅ Verify APK
       run: |
@@ -86,23 +84,21 @@ jobs:
         java-version: ${{ env.JAVA_VERSION }}
         distribution: 'temurin'
 
-    - name: 🤖 Set up Android SDK
+    - name: 🤖 Setup Android SDK
       uses: android-actions/setup-android@v3
-
-    - name: 📝 Accept Android SDK licenses
-      run: |
-        yes | sdkmanager --licenses || true
-        yes | sdkmanager --update || true
-
-    - name: 📦 Install SDK components
-      run: |
-        sdkmanager "platforms;android-34" "build-tools;34.0.0" || true
+      with:
+        cmdline-tools-version: 8512546
+        packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
+        accept-android-sdk-licenses: true
 
     - name: 🔐 Grant execute permission
       run: chmod +x gradlew
 
     - name: 🏗️ Build Release APK
-      run: ./gradlew assembleRelease --stacktrace
+      run: |
+        export ANDROID_HOME=/usr/local/lib/android/sdk
+        export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+        ./gradlew assembleRelease --stacktrace
 
     - name: 📤 Upload Release APK
       uses: actions/upload-artifact@v4
